@@ -1,22 +1,22 @@
 'use strict';
 
 angular.module('BootstrapApplication.services')
-    .factory('CityService', ['$http', function($http) {
-        var cityService = {};
-        cityService.findCity = function (lat, lon, successFn) {
+    .factory('LoanService', ['$http', function($http) {
+        var loanService = {};
+        loanService.findCity = function (lat, lon, successFn) {
             $http({
-                url: '/city/'+lat+'/'+lon,
+                url: '/loanApplication/'+lat+'/'+lon,
                 dataType: 'json',
-                method: 'POST',
+                method: 'PUT    ',
                 data: '',
                 headers: {
-                    'Content-Type': 'application/vnd.com.ofg.twitter-places-analyzer.v1+json'
+                    'Content-Type': 'application/vnd.pl.warsjawa.ui.v1+json'
                 }
             }).success(function (data) {
                 successFn(data);
             });
         };
 
-        return cityService;
+        return loanService;
     }
 ]);

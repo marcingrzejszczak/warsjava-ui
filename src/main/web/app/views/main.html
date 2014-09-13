@@ -3,20 +3,20 @@
 </alert>
 
 <div>
-    <h3>Welcome in the bootstrap gui microservice</h3>
+    <h3>Welcome dear client!</h3>
 
     <p class="lead">
 
-    <h4>Find the city</h4>
+    <h4>Take a loan</h4>
 
     <form role="form">
+
         <div class="form-group">
-            <label for="latitude">Latitude</label>
-            <input type="text" class="form-control" id="latitude" placeholder="Latitude" ng-model="lat">
-        </div>
-        <div class="form-group">
-            <label for="longtitude">Longtitude</label>
-            <input type="text" class="form-control" id="longtitude" placeholder="Longtitude" ng-model="lon">
+            <label for="job">Job</label>
+            <select id="job" class="form-control" ng-model="job">
+                <option>IT</option>
+                <option>FINANCE_SECTOR</option>
+            </select>
         </div>
         <button type="button" class="btn btn-default" ng-click="findCity()">Find</button>
     </form>

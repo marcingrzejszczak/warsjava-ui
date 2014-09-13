@@ -1,6 +1,6 @@
 package com.ofg.base
 import com.ofg.infrastructure.base.MvcWiremockIntegrationSpec
-import com.ofg.microservice.Application
+import pl.warsjawa.microservice.Application
 import org.springframework.boot.test.SpringApplicationContextLoader
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration

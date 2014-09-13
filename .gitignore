@@ -10,4 +10,5 @@ commitHash.txt
 logs
 .log
 .zip
+.java-version
 /out
