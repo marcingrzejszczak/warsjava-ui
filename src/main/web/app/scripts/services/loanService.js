@@ -3,12 +3,12 @@
 angular.module('BootstrapApplication.services')
     .factory('LoanService', ['$http', function($http) {
         var loanService = {};
-        loanService.findCity = function (lat, lon, successFn) {
+        loanService.applyForLoan = function (job, successFn) {
             $http({
-                url: '/loanApplication/'+lat+'/'+lon,
+                url: '/api/loanApplication/123123123',
                 dataType: 'json',
-                method: 'PUT    ',
-                data: '',
+                method: 'PUT',
+                data: '{"job":"'+job+'"}',
                 headers: {
                     'Content-Type': 'application/vnd.pl.warsjawa.ui.v1+json'
                 }

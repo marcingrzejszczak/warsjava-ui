@@ -69,7 +69,7 @@ module.exports = function (grunt) {
         connect: {
             proxies: [
                 {context: '/info', host: 'localhost', port: 8080},
-                {context: '/city', host: 'localhost', port: 8080},
+                {context: '/loanApplication', host: 'localhost', port: 8080},
                 {context: '/api', host: 'localhost', port: 8080}
             ],
             options: {

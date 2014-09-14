@@ -17,7 +17,7 @@ import static com.ofg.config.BasicProfiles.*
 @Configuration
 @EnableAutoConfiguration(exclude = MetricRepositoryAutoConfiguration)
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@ComponentScan(basePackages = ["pl.warsjawa.microservice", "pl.warsjawa.fraud"])
+@ComponentScan(basePackages = ["pl.warsjawa.microservice", "pl.warsjawa.loan"])
 @EnableCaching
 @EnableAsync
 class Application {
