@@ -33,9 +33,10 @@ class LoanApplicationController {
     @ApiOperation(value = "Async verification of loan application by given loanApplicationId",
             notes = "This will asynchronously verify what's the probability of the user to be a fraud and will call LoanApplicationDecisionMaker")
     void checkIfUserIsFraud(@PathVariable @NotNull String loanApplicationId, @RequestBody @NotNull String loanApplicationDetails) {
+        log.info("Sending a request to [$Dependencies.FRED] to check if the client is a potential fraud")
         serviceRestClient.forService(Dependencies.FRED.toString())
                          .put()
-                         .onUrlFromTemplate(LOAN_APPLICATION_URL)
+                         .onUrlFromTemplate(FRAUD_LOAN_APPLICATION_URL)
                          .withVariables(loanApplicationId)
                          .body(loanApplicationDetails)
                          .withHeaders()
