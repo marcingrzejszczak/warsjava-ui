@@ -15,7 +15,7 @@ import static pl.warsjawa.loan.UiApi.*
 @Slf4j
 @RestController
 @RequestMapping(API_URL)
-@Api(value = "fraudDetection", description = "Checks loan application details for possible fraud cases")
+@Api(value = "loanApplication", description = "Entry point to the generation of a loan application")
 class LoanApplicationController {
 
     private final ServiceRestClient serviceRestClient
@@ -30,7 +30,7 @@ class LoanApplicationController {
             method = RequestMethod.PUT,
             consumes = UI_API_VERSION_1,
             produces = UI_API_VERSION_1)
-    @ApiOperation(value = "Async verification of loan application by given loanApplicationId",
+    @ApiOperation(value = "Sends a request ",
             notes = "This will asynchronously verify what's the probability of the user to be a fraud and will call LoanApplicationDecisionMaker")
     void checkIfUserIsFraud(@PathVariable @NotNull String loanApplicationId, @RequestBody @NotNull String loanApplicationDetails) {
         log.info("Sending a request to [$Dependencies.FRED] to check if the client is a potential fraud")
