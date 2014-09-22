@@ -1,6 +1,6 @@
 package pl.warsjawa.loan;
 
-public class UiApi {
+public final class UiApi {
     public static final String API_URL = "/api" ;
     public static final String APPLICATION = "application";
     public static final String UI_NAME = "vnd.pl.warsjawa.ui";

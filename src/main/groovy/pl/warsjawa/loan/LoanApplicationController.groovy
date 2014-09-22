@@ -1,5 +1,5 @@
 package pl.warsjawa.loan
-import com.ofg.infrastructure.web.resttemplate.fluent.ServiceRestClient
+
 import com.wordnik.swagger.annotations.Api
 import com.wordnik.swagger.annotations.ApiOperation
 import groovy.transform.CompileStatic
@@ -18,11 +18,11 @@ import static pl.warsjawa.loan.UiApi.*
 @Api(value = "loanApplication", description = "Entry point to the generation of a loan application")
 class LoanApplicationController {
 
-    private final ServiceRestClient serviceRestClient
+    private final FraudCheckWorker fraudCheckWorker
 
     @Autowired
-    LoanApplicationController(ServiceRestClient serviceRestClient) {
-        this.serviceRestClient = serviceRestClient
+    LoanApplicationController(FraudCheckWorker fraudCheckWorker) {
+        this.fraudCheckWorker = fraudCheckWorker
     }
 
     @RequestMapping(
@@ -34,14 +34,6 @@ class LoanApplicationController {
             notes = "This will asynchronously verify what's the probability of the user to be a fraud and will call LoanApplicationDecisionMaker")
     void checkIfUserIsFraud(@PathVariable @NotNull String loanApplicationId, @RequestBody @NotNull String loanApplicationDetails) {
         log.info("Sending a request to [$Dependencies.FRED] to check if the client is a potential fraud")
-        serviceRestClient.forService(Dependencies.FRED.toString())
-                         .put()
-                         .onUrlFromTemplate(FRAUD_LOAN_APPLICATION_URL)
-                         .withVariables(loanApplicationId)
-                         .body(loanApplicationDetails)
-                         .withHeaders()
-                            .contentType(FRAUD_API_VERSION_1)
-                         .andExecuteFor()
-                         .ignoringResponse()
+        fraudCheckWorker.checkIfUserIsFraud(loanApplicationId, loanApplicationDetails)
     }
 }
