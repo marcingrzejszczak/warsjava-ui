@@ -19,7 +19,7 @@ class LoanAmountMetricCollector {
 
     void updateLoanAmountMetric(String loanApplicationDetails) {
         def root = new JsonSlurper().parseText(loanApplicationDetails)
-        String amount = root.amount.toLowerCase()
+        String amount = root.amount
         log.debug("Updating metrics for amount [$amount]")
         if (amount.isNumber()) {
             loanAmountMetric.update(amount.toLong())
