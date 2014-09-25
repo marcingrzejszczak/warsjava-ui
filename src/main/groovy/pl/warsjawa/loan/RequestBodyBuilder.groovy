@@ -10,7 +10,7 @@ class RequestBodyBuilder {
         def root = new JsonSlurper().parseText(loanApplicationDetails)
         def builder = new groovy.json.JsonBuilder()
         builder {
-            name root.name
+            firstName root.firstName
             lastName root.lastName
             id loanApplicationId
         }
