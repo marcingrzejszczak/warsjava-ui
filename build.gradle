@@ -28,9 +28,8 @@ apply plugin: 'idea'
 apply plugin: 'com.moowork.node'
 
 ext {
-    versionPrefix = "CD"
-    buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
-    currentVersion = "${versionPrefix}-${buildNrLoc}"
+    buildNrLoc = System.getenv()['VERSION'] ?: "CD-000"
+    currentVersion = "${buildNrLoc}"
     
     groovyVersion = '2.3.6'
     spockVersion = '0.7-groovy-2.0'
@@ -43,12 +42,12 @@ ext {
 
 uploadArchives {
     repositories.mavenDeployer {
-        repository(url: "http://nexus.4finance.net/content/repositories/Pipeline") {
-            authentication(userName: '', password: '')
+        repository(url: "http://nexus.warsjawa.uservices.pl:8081/nexus/content/repositories/releases/") {
+            authentication(userName: 'admin', password: 'admin123')
         }
         pom.version = currentVersion
-        pom.artifactId = project.name
-        pom.groupId = 'com.ofg'
+        pom.artifactId = System.getenv()['ARTIFACT']
+        pom.groupId = System.getenv()['GROUP_ID']
     }
 }
 
