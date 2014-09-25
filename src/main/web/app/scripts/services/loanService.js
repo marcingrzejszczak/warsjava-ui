@@ -8,7 +8,7 @@ angular.module('BootstrapApplication.services')
                 url: '/api/loanApplication',
                 dataType: 'json',
                 method: 'POST',
-                data: '{"job":"'+formData.job+'","name":"'+formData.name+'","lastName":"'+formData.lastName+'","amount":"'+formData.amount+'"}',
+                data: '{"job":"'+formData.job+'","firstName":"'+formData.firstName+'","lastName":"'+formData.lastName+'","amount":"'+formData.amount+'"}',
                 headers: {
                     'Content-Type': 'application/vnd.pl.warsjawa.ui.v1+json'
                 }
