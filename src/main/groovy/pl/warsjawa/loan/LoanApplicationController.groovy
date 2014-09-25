@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 import javax.validation.constraints.NotNull
+import java.util.concurrent.atomic.AtomicInteger
 
 import static pl.warsjawa.loan.UiApi.*
 
@@ -19,7 +20,7 @@ import static pl.warsjawa.loan.UiApi.*
 class LoanApplicationController {
 
     private final FraudCheckWorker fraudCheckWorker
-    private int counter = 0;
+    private AtomicInteger counter = new AtomicInteger(0);
 
     @Autowired
     LoanApplicationController(FraudCheckWorker fraudCheckWorker) {
@@ -34,7 +35,7 @@ class LoanApplicationController {
     @ApiOperation(value = "Sends a request ",
             notes = "This will asynchronously verify what's the probability of the user to be a fraud and will call LoanApplicationDecisionMaker")
     void checkIfUserIsFraud(@RequestBody @NotNull String loanApplicationDetails) {
-        int loanApplicationId = ++counter
+        int loanApplicationId = counter.getAndIncrement()
         fraudCheckWorker.checkIfUserIsFraud(loanApplicationId, loanApplicationDetails)
     }
 }
