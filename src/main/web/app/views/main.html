@@ -12,18 +12,20 @@
     <form role="form">
 
         <div class="form-group">
+            <label for="name">First name</label>
+            <input type="text" id="name" class="form-control" ng-model="formData.name" />
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" class="form-control" ng-model="formData.lastName" />
             <label for="job">Job</label>
-            <select id="job" class="form-control" ng-model="job">
+            <select id="job" class="form-control" ng-model="formData.job">
                 <option>IT</option>
                 <option>FINANCE_SECTOR</option>
             </select>
+            <label for="amount">Amount</label>
+            <input type="text" id="amount" class="form-control" ng-model="formData.amount" />
         </div>
         <button type="button" class="btn btn-default" ng-click="applyForLoan()">Apply for loan</button>
     </form>
 
-    <hr/>
-
-    <div class="well">
-        The city you are looking for is: {{city}}
-    </div>
+    <br />
 </div>
