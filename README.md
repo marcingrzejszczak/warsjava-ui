@@ -1,6 +1,8 @@
 boot-microservice-gui
 =======================
 
+## Description
+
 This is an extension of the non-GUI boot-microservice. To read about the backend side, please refer to 
 [boot-microservice README](https://github.com/4finance/boot-microservice/blob/master/README.md)
 
