@@ -68,9 +68,9 @@ module.exports = function (grunt) {
         // The actual grunt server settings
         connect: {
             proxies: [
-                {context: '/info', host: 'localhost', port: 8080},
-                {context: '/loanApplication', host: 'localhost', port: 8080},
-                {context: '/api', host: 'localhost', port: 8080}
+                {context: '/info', host: 'localhost', port: 9051},
+                {context: '/loanApplication', host: 'localhost', port: 9051},
+                {context: '/api', host: 'localhost', port: 9051}
             ],
             options: {
                 port: 9000,
