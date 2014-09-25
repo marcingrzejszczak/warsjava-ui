@@ -1,5 +1,5 @@
 {
-    "europe": {
+    "test": {
         "this": "pl/warsjawa/ui",
         "dependencies": {
             "fred" : "pl/warsjawa/fraud-detection-service",
