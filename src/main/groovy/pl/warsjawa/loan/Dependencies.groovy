@@ -2,7 +2,7 @@ package pl.warsjawa.loan
 
 
 public enum Dependencies {
-    FRED
+    FRED, CLIENTS
 
     @Override
     String toString() {

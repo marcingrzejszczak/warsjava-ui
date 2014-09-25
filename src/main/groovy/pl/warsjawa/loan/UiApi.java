@@ -15,4 +15,7 @@ public final class UiApi {
     public static final String FRAUD_JSON_V1 = FRAUD_NAME + JSON_V1;
     public static final String FRAUD_API_VERSION_1 = APPLICATION + "/" + FRAUD_JSON_V1;
     public static final String FRAUD_LOAN_APPLICATION_URL = API_URL + "/" + LOAN_APPLICATION_ROOT_URL + "/{loanApplicationId}";
+
+    public static final String CLIENTS_JSON = "application/json";
+    public static final String CLIENTS_SERVICE_URL = "/clients";
 }

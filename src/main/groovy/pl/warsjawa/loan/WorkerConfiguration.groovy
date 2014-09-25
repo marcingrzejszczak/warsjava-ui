@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration
 class WorkerConfiguration {
 
     @Bean @PackageScope FraudCheckWorker fraudCheckWorker(MetricRegistry metricRegistry, ServiceRestClient serviceRestClient) {
-        return new FraudCheckWorker(serviceRestClient, new LoanAmountMetricCollector(metricRegistry))
+        return new FraudCheckWorker(serviceRestClient, new LoanAmountMetricCollector(metricRegistry), new RequestBodyBuilder())
     }
 
 }
