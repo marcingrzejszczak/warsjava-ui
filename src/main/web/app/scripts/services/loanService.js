@@ -5,9 +5,9 @@ angular.module('BootstrapApplication.services')
         var loanService = {};
         loanService.applyForLoan = function (formData, successFn) {
             $http({
-                url: '/api/loanApplication/123123123',
+                url: '/api/loanApplication',
                 dataType: 'json',
-                method: 'PUT',
+                method: 'POST',
                 data: '{"job":"'+formData.job+'","name":"'+formData.name+'","lastName":"'+formData.lastName+'","amount":"'+formData.amount+'"}',
                 headers: {
                     'Content-Type': 'application/vnd.pl.warsjawa.ui.v1+json'

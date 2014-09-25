@@ -6,7 +6,7 @@ import groovy.transform.PackageScope
 @PackageScope
 class RequestBodyBuilder {
 
-    String createClientsRequestBody(String loanApplicationId, String loanApplicationDetails) {
+    String createClientsRequestBody(int loanApplicationId, String loanApplicationDetails) {
         def root = new JsonSlurper().parseText(loanApplicationDetails)
         def builder = new groovy.json.JsonBuilder()
         builder {

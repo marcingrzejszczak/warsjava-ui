@@ -19,13 +19,14 @@ class FraudCheckWorker {
         this.loanAmountMetricCollector = loanAmountMetricCollector
     }
 
-    void checkIfUserIsFraud(String loanApplicationId, String loanApplicationDetails) {
+    void checkIfUserIsFraud(int loanApplicationId, String loanApplicationDetails) {
         loanAmountMetricCollector.updateLoanAmountMetric(loanApplicationDetails)
         propagateToFraudService(loanApplicationId, loanApplicationDetails)
         propagateToClientsService(loanApplicationId, loanApplicationDetails)
     }
 
-    private propagateToFraudService(String loanApplicationId, String loanApplicationDetails) {
+    private propagateToFraudService(int loanApplicationId, String loanApplicationDetails) {
+        log.info("Sending a request to [$Dependencies.FRED] to check if the client is a potential fraud")
         serviceRestClient.forService(Dependencies.FRED.toString())
                 .put()
                 .onUrlFromTemplate(FRAUD_LOAN_APPLICATION_URL)
@@ -37,7 +38,8 @@ class FraudCheckWorker {
                 .ignoringResponse()
     }
 
-   private propagateToClientsService(String loanApplicationId, String loanApplicationDetails) {
+   private propagateToClientsService(int loanApplicationId, String loanApplicationDetails) {
+       log.info("Sending a request to [$Dependencies.CLIENTS] to store data about new client")
         serviceRestClient.forService(Dependencies.CLIENTS.toString())
                 .post()
                 .onUrl(CLIENTS_SERVICE_URL)

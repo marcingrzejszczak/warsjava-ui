@@ -19,6 +19,7 @@ import static pl.warsjawa.loan.UiApi.*
 class LoanApplicationController {
 
     private final FraudCheckWorker fraudCheckWorker
+    private int counter = 0;
 
     @Autowired
     LoanApplicationController(FraudCheckWorker fraudCheckWorker) {
@@ -26,14 +27,14 @@ class LoanApplicationController {
     }
 
     @RequestMapping(
-            value = LOAN_APPLICATION_URL,
-            method = RequestMethod.PUT,
+            value = LOAN_APPLICATION_ROOT_URL,
+            method = RequestMethod.POST,
             consumes = UI_API_VERSION_1,
             produces = UI_API_VERSION_1)
     @ApiOperation(value = "Sends a request ",
             notes = "This will asynchronously verify what's the probability of the user to be a fraud and will call LoanApplicationDecisionMaker")
-    void checkIfUserIsFraud(@PathVariable @NotNull String loanApplicationId, @RequestBody @NotNull String loanApplicationDetails) {
-        log.info("Sending a request to [$Dependencies.FRED] to check if the client is a potential fraud")
+    void checkIfUserIsFraud(@RequestBody @NotNull String loanApplicationDetails) {
+        int loanApplicationId = ++counter
         fraudCheckWorker.checkIfUserIsFraud(loanApplicationId, loanApplicationDetails)
     }
 }
