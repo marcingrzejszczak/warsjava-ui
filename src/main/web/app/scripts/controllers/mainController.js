@@ -13,9 +13,11 @@ angular.module('BootstrapApplication.controllers')
             ];
             $scope.alerts = [];
 
+            $scope.response = '';
             $scope.formData = {};
             $scope.applyForLoan = function() {
                 LoanService.applyForLoan($scope.formData, function(data) {
+                    $scope.response = data;
                 });
             };
 
